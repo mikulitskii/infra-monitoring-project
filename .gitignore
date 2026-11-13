@@ -1,0 +1,20 @@
+# Logs and network captures
+*.log
+*.pcap
+*.pcapng
+logs/
+
+# Temporary files
+*.tmp
+*.swp
+*.bak
+*~
+.DS_Store
+
+# Build artifacts & dependencies
+dist/
+build/
+__pycache__/
+*.py[cod]
+node_modules/
+.env
