@@ -1,0 +1,24 @@
+name: CI Pipeline
+
+on:
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  lint-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Check Bash scripts syntax
+        run: |
+          bash -n scripts/check_api.sh
+          bash -n scripts/analyze_logs.sh
+
+      - name: Test API monitoring script
+        run: |
+          chmod +x scripts/check_api.sh scripts/analyze_logs.sh
+          ./scripts/check_api.sh https://httpbin.org/status/200
